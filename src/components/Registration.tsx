@@ -1,5 +1,5 @@
 // Registration form with Stripe checkout integration - Enhanced with comprehensive logging
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowLeft, CreditCard, Shield, Clock, Loader2, CheckCircle } from 'lucide-react';
 import { stripeProducts } from '../stripe-config';
 
@@ -38,6 +38,28 @@ export const Registration: React.FC<RegistrationProps> = ({
 
   // Get the masterclass product
   const masterclassProduct = stripeProducts[0];
+
+  // Environment variables debugging
+  useEffect(() => {
+    console.log('=== ENVIRONMENT VARIABLES DEBUG ===');
+    console.log('VITE_SUPABASE_URL:', import.meta.env.VITE_SUPABASE_URL);
+    console.log('VITE_SUPABASE_ANON_KEY exists:', !!import.meta.env.VITE_SUPABASE_ANON_KEY);
+    console.log('Environment mode:', import.meta.env.MODE);
+    console.log('All env vars:', import.meta.env);
+    
+    // Test if we can construct the API URL
+    const testApiUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/create-checkout-session`;
+    console.log('Constructed API URL:', testApiUrl);
+    
+    // Check if URL looks valid
+    if (!import.meta.env.VITE_SUPABASE_URL) {
+      console.error('❌ VITE_SUPABASE_URL is missing!');
+      setMessage({ type: 'error', text: 'Configuration error: Missing Supabase URL. Please check environment variables.' });
+    } else if (!import.meta.env.VITE_SUPABASE_URL.startsWith('https://')) {
+      console.error('❌ VITE_SUPABASE_URL does not look like a valid URL!');
+      setMessage({ type: 'error', text: 'Configuration error: Invalid Supabase URL format.' });
+    }
+  }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({
@@ -448,4 +470,3 @@ export const Registration: React.FC<RegistrationProps> = ({
     </div>
   );
 };
-
