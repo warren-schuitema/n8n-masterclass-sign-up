@@ -448,3 +448,25 @@ export const Registration: React.FC<RegistrationProps> = ({
     </div>
   );
 };
+
+// Add this to your Registration component's useEffect
+React.useEffect(() => {
+  console.log('=== ENVIRONMENT VARIABLES DEBUG ===');
+  console.log('VITE_SUPABASE_URL:', import.meta.env.VITE_SUPABASE_URL);
+  console.log('VITE_SUPABASE_ANON_KEY exists:', !!import.meta.env.VITE_SUPABASE_ANON_KEY);
+  console.log('Environment mode:', import.meta.env.MODE);
+  console.log('All env vars:', import.meta.env);
+  
+  // Test if we can construct the API URL
+  const testApiUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/create-checkout-session`;
+  console.log('Constructed API URL:', testApiUrl);
+  
+  // Check if URL looks valid
+  if (!import.meta.env.VITE_SUPABASE_URL) {
+    console.error('❌ VITE_SUPABASE_URL is missing!');
+    setMessage({ type: 'error', text: 'Configuration error: Missing Supabase URL. Please check environment variables.' });
+  } else if (!import.meta.env.VITE_SUPABASE_URL.startsWith('https://')) {
+    console.error('❌ VITE_SUPABASE_URL does not look like a valid URL!');
+    setMessage({ type: 'error', text: 'Configuration error: Invalid Supabase URL format.' });
+  }
+}, []);
