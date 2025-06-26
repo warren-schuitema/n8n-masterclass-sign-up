@@ -1,4 +1,4 @@
-// Instructor bio section featuring Warren Schuitema - Fixed image import for deployment
+// Instructor bio section featuring Warren Schuitema - Updated with actual social media links
 import React from 'react';
 import { Linkedin, Twitter, Globe } from 'lucide-react';
 import instructorImage from '../assets/3eEbkcdwaLZQ5sLM1Hybl_825df02bd20d49ff9a2a3ffc2885bb60.png';
@@ -68,21 +68,27 @@ export const Instructor: React.FC = () => {
                 {/* Social Links */}
                 <div className="flex space-x-4 mt-8">
                   <a
-                    href="#"
+                    href="https://www.linkedin.com/in/warren-schuitema-9244721a/"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center justify-center w-12 h-12 bg-navy-700/50 rounded-lg hover:bg-electric-500/20 transition-colors duration-200"
-                    aria-label="LinkedIn"
+                    aria-label="LinkedIn Profile"
                   >
                     <Linkedin className="h-6 w-6 text-electric-400" />
                   </a>
                   <a
-                    href="#"
+                    href="https://x.com/MatchlessMarket"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center justify-center w-12 h-12 bg-navy-700/50 rounded-lg hover:bg-electric-500/20 transition-colors duration-200"
-                    aria-label="Twitter"
+                    aria-label="X/Twitter Profile"
                   >
                     <Twitter className="h-6 w-6 text-electric-400" />
                   </a>
                   <a
-                    href="#"
+                    href="https://matchless-marketing.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center justify-center w-12 h-12 bg-navy-700/50 rounded-lg hover:bg-electric-500/20 transition-colors duration-200"
                     aria-label="Website"
                   >
