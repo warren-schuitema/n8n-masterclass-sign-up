@@ -1,6 +1,7 @@
-// Instructor bio section featuring Warren Schuitema
+// Instructor bio section featuring Warren Schuitema - Fixed image import for deployment
 import React from 'react';
 import { Linkedin, Twitter, Globe } from 'lucide-react';
+import instructorImage from '../assets/3eEbkcdwaLZQ5sLM1Hybl_825df02bd20d49ff9a2a3ffc2885bb60.png';
 
 export const Instructor: React.FC = () => {
   return (
@@ -24,7 +25,7 @@ export const Instructor: React.FC = () => {
               <div className="lg:col-span-1 text-center">
                 <div className="relative inline-block">
                   <img
-                    src="/src/assets/3eEbkcdwaLZQ5sLM1Hybl_825df02bd20d49ff9a2a3ffc2885bb60.png"
+                    src={instructorImage}
                     alt="Warren Schuitema"
                     className="w-64 h-64 rounded-2xl object-cover border-4 border-electric-400/30 shadow-2xl"
                   />
